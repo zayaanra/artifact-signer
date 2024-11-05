@@ -1,6 +1,25 @@
 repos:
-  - repo: https://github.com/trufflesecurity/trufflehog
-    rev: v3.83.3  # Specify a version for consistency
-    hooks:
-      - id: trufflehog
-        args: [--no-verification]
+- repo: local
+  hooks:
+    - id: trufflehog
+      name: TruffleHog
+      description: Detect secrets in your data.
+      entry: bash -c 'trufflehog git file://. --since-commit HEAD --no-update --no-verification --fail'
+      language: system
+      stages: ["pre-commit"]
+
+
+
+
+
+# repos:
+#   - repo: local
+#     hooks:
+#       - id: trufflehog
+#         name: TruffleHog
+#         description: Detect secrets in your data.
+#         entry: bash -c 'trufflehog git file://. --since-commit HEAD --no-verification --fail'
+#         language: system
+#         stages: ["commit", "push"]
+
+
