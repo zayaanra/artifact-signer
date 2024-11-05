@@ -77,6 +77,7 @@ def get_verification_proof(log_index, debug=False):
 
     log_entry = get_log_entry(log_index)
     if log_entry is None:
+        print("No log entry found for given log index")
         return None
     key = list(log_entry.keys())[0]
     return log_entry[key]["verification"]
@@ -103,6 +104,7 @@ def inclusion(log_index, artifact_filepath, debug=False):
 
     log_entry = get_log_entry(log_index)
     if log_entry is None:
+        print("No log entry found for given log index")
         return
 
     try:
@@ -124,6 +126,7 @@ def inclusion(log_index, artifact_filepath, debug=False):
         verify_inclusion(
             DefaultHasher, inclusion_proof, compute_leaf_hash(body), debug=debug
         )
+        print("Verified inclusion")
     except (KeyError, ValueError, binascii.Error) as e:
         print(
             f"Failed to verify inclusion of log index {log_index}"
