@@ -23,9 +23,9 @@ venv/Scripts/activate
 source venv/bin/activate
 ```
 
-4. Install the required dependencies (you need to have `pip` installed for this)
+4. Install the required dependencies (you need to have `poetry` installed for this)
 ```
-pip install -r requirements.txt
+poetry install
 ```
 
 ## Usage
