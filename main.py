@@ -53,6 +53,9 @@ def get_log_entry(log_index, debug=False):
             f"https://rekor.sigstore.dev/api/v1/log/entries?logIndex={log_index}",
             timeout=5,
         )
+        content = resp.json()
+        if 'code' in content and content['code'] == 609:
+            return None
         return resp.json()
     except requests.exceptions.RequestException as e:
         print(f"Failed to fetch log entry from log index {log_index}: {e}")
@@ -127,9 +130,9 @@ def inclusion(log_index, artifact_filepath, debug=False):
             DefaultHasher, inclusion_proof, compute_leaf_hash(body), debug=debug
         )
         print("Verified inclusion")
-    except (KeyError, ValueError, binascii.Error) as e:
+    except (KeyError, ValueError, TypeError, FileNotFoundError, binascii.Error) as e:
         print(
-            f"Failed to verify inclusion of log index {log_index}"
+            f"Failed to verify inclusion of log index {log_index} "
             f"with artifact {artifact_filepath}: {e}"
         )
 
@@ -201,6 +204,7 @@ def consistency(prev_checkpoint, debug=False):
             content["hashes"],
             [prev_root, latest_root],
         )
+        print("Verified consistency")
     except (
         requests.exceptions.RequestException,
         RootMismatchError,
@@ -210,7 +214,6 @@ def consistency(prev_checkpoint, debug=False):
         print(
             "Failed to verify consistency proof from Rekor Server public instance: ", e
         )
-        print("Response was: ", resp.raise_for_status())
 
 
 def main():
@@ -258,7 +261,7 @@ def main():
         "--tree-id", help="Tree ID for consistency proof", required=False
     )
     parser.add_argument(
-        "--tree-size", help="Tree size for consistency proof", required=False, type=int
+        "--tree-size", help="Tree size for consistency proof", required=False,
     )
     parser.add_argument(
         "--root-hash", help="Root hash for consistency proof", required=False
