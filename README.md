@@ -60,5 +60,17 @@ Optionally, all commands can also be run with the `-d` or `--debug` flag to enab
 ```
 python main.py -d
 // or
-python main.py --debug=True
+python main.py --debug
 ```
+
+## License
+See LICENSE for more information.
+
+## Contributing
+See CONTRIBUTING.md for more information.
+
+## Security
+See SECURITY.md for more information.
+
+## Maintenance
+This project is maintained by Zayaan Rahman.

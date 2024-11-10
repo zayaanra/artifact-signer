@@ -1,6 +1,7 @@
 __pycache__
 .ruff_cache
 venv
+static_analysis_results
 
 checkpoint.json
 .coverage
