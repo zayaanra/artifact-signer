@@ -23,8 +23,8 @@ import ast
 import binascii
 import requests
 
-from util import extract_public_key, verify_artifact_signature, decode_base64
-from merkle_proof import (
+from python_artifact_signer.util import extract_public_key, verify_artifact_signature, decode_base64
+from python_artifact_signer.merkle_proof import (
     DefaultHasher,
     verify_consistency,
     verify_inclusion,

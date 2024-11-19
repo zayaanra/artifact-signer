@@ -1,4 +1,4 @@
-from main import get_verification_proof
+from python_artifact_signer.main import get_verification_proof
 from jsonschema import validate
 
 

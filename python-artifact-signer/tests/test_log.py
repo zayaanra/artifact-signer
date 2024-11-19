@@ -1,4 +1,4 @@
-from main import get_log_entry
+from python_artifact_signer.main import get_log_entry
 from jsonschema import validate
 
 

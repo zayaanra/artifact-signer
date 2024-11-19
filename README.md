@@ -63,6 +63,10 @@ python main.py -d
 python main.py --debug
 ```
 
+### Running tests
+You can run the given tests. Make sure to have `pytest` installed. Please refer to `pytest` documentation if needed: https://docs.pytest.org/en/stable/index.html
+To run the given tests, in the root directy of the project, run: `PYTHONPATH=python-artifact-signer/python_artifact_signer/ pytest`
+
 ## License
 See LICENSE for more information.
 

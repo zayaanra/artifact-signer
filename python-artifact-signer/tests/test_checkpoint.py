@@ -18,7 +18,7 @@ checkpoint_schema = {
 
 def test_checkpoint():
     result = subprocess.run(
-        ["python", "main.py", "-c"],
+        ["python", "python-artifact-signer/python_artifact_signer/main.py", "-c"],
         capture_output=True,
         text=True
     )

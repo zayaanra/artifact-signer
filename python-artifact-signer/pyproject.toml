@@ -1,9 +1,11 @@
 [tool.poetry]
-name = "pkg"
-version = "0.1.0"
-description = "Dependency management for this project"
+name = "python-artifact-signer"
+version = "0.4.0"
+description = ""
 authors = ["Zayaan Rahman <rahmanzayaan43@gmail.com>"]
-readme = "README.md"
+
+[tool.poetry.scripts]
+python-artifact-signer = "python_artifact_signer.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
