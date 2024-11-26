@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "python-artifact-signer"
-version = "0.4.0"
+version = "0.5.0"
 description = ""
 authors = ["Zayaan Rahman <rahmanzayaan43@gmail.com>"]
+readme = "README.md"
 
 [tool.poetry.scripts]
 python-artifact-signer = "python_artifact_signer.main:main"
