@@ -6,3 +6,6 @@ static_analysis_results
 
 checkpoint.json
 .coverage
+
+cosign.key
+cosign.pub
