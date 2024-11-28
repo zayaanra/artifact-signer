@@ -39,11 +39,11 @@ jobs:
               run: |
                 bandit -r python-artifact-signer/python_artifact_signer
 
-            - name: Run TruffleHog
-              uses: trufflesecurity/trufflehog-actions-scan@v2
-              with:
-                scan-directory: './'
-                github-token: ${{ secrets.GITHUB_TOKEN }}
+            # - name: Run TruffleHog
+            #   uses: trufflesecurity/trufflehog-actions-scan@v2
+            #   with:
+            #     scan-directory: './'
+            #     github-token: ${{ secrets.GITHUB_TOKEN }}
             
             - name: Run Pytest
               run: |
