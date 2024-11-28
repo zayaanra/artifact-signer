@@ -18,7 +18,7 @@ jobs:
             - name: Install dependencies
               run: |
                 python -m pip install --upgrade pip
-                pip install ruff flake8 bandit pytest
+                pip install ruff black bandit pytest
                 poetry install -C python-artifact-signer/ --no-interaction --no-root
 
 
