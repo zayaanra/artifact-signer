@@ -45,6 +45,8 @@ jsonschema = "^4.23.0"
 pytest-cov = "^6.0.0"
 cyclonedx-bom = "^5.1.1"
 
+[tool.ruff]
+ignore = ["E501"]
 
 [build-system]
 requires = ["poetry-core"]
