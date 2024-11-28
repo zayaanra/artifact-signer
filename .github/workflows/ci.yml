@@ -22,13 +22,13 @@ jobs:
                 poetry install -C python-artifact-signer/ --no-interaction --no-root
 
 
-            - name: Run Ruff
+            - name: Run Black
+              run: |
+                black --check python-artifact-signer/python_artifact_signer
+
+            - name: Run ruff
               run: |
                 ruff check python-artifact-signer/python_artifact_signer
-
-            - name: Run flake8
-              run: |
-                flake8 python-artifact-signer/python_artifact_signer
 
             - name: Run Bandit
               run: |

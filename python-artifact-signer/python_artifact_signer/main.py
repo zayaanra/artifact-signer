@@ -23,7 +23,11 @@ import ast
 import binascii
 import requests
 
-from python_artifact_signer.util import extract_public_key, verify_artifact_signature, decode_base64
+from python_artifact_signer.util import (
+    extract_public_key,
+    verify_artifact_signature,
+    decode_base64,
+)
 from python_artifact_signer.merkle_proof import (
     DefaultHasher,
     verify_consistency,
@@ -54,7 +58,7 @@ def get_log_entry(log_index, debug=False):
             timeout=5,
         )
         content = resp.json()
-        if 'code' in content and content['code'] == 609:
+        if "code" in content and content["code"] == 609:
             return None
         return resp.json()
     except requests.exceptions.RequestException as e:
@@ -261,7 +265,9 @@ def main():
         "--tree-id", help="Tree ID for consistency proof", required=False
     )
     parser.add_argument(
-        "--tree-size", help="Tree size for consistency proof", required=False,
+        "--tree-size",
+        help="Tree size for consistency proof",
+        required=False,
     )
     parser.add_argument(
         "--root-hash", help="Root hash for consistency proof", required=False
