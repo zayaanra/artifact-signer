@@ -36,7 +36,7 @@ jobs:
 
             - name: Run ruff
               run: |
-                python-artifact-signer/.venv/bin/black check python-artifact-signer/python_artifact_signer
+                python-artifact-signer/.venv/bin/ruff check python-artifact-signer/python_artifact_signer
 
             - name: Run Bandit
               run: |
