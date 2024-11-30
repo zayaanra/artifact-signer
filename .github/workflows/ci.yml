@@ -30,7 +30,7 @@ jobs:
               run: |
                 poetry install -C python-artifact-signer
                 poetry -C python-artifact-signer add requests
-                source .venv/bin/activate
+                source python-artifact-signer/.venv/bin/activate
 
             - name: Run Black
               run: |
