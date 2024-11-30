@@ -25,15 +25,18 @@ jobs:
 
             - name: Run Black
               run: |
-                python-artifact-signer/.venv/bin/black --check python-artifact-signer/python_artifact_signer
+                source python-artifact-signer/.venv/bin/activate
+                black --check python-artifact-signer/python_artifact_signer
 
             - name: Run ruff
               run: |
-                python-artifact-signer/.venv/bin/ruff check python-artifact-signer/python_artifact_signer
+                source python-artifact-signer/.venv/bin/activate
+                ruff check python-artifact-signer/python_artifact_signer
 
             - name: Run Bandit
               run: |
-                python-artifact-signer/.venv/bin/bandit -r python-artifact-signer/python_artifact_signer
+                source python-artifact-signer/.venv/bin/activate
+                bandit -r python-artifact-signer/python_artifact_signer
 
             # - name: Run TruffleHog
             #   uses: trufflesecurity/trufflehog-actions-scan@v2
@@ -44,6 +47,6 @@ jobs:
             - name: Run Pytest
               run: |
                 source python-artifact-signer/.venv/bin/activate
-                PYTHONPATH=python-artifact-signer/ python-artifact-signer/.venv/bin/pytest --cov
+                PYTHONPATH=python-artifact-signer/ pytest --cov
               
 
