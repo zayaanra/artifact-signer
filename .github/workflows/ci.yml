@@ -22,7 +22,6 @@ jobs:
             - name: Install dependencies
               run: |
                 poetry install -C python-artifact-signer
-                poetry python-artifact-signer/ lock
 
             - name: Run Black
               run: |
