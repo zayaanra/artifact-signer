@@ -29,7 +29,7 @@ jobs:
             - name: Install dependencies
               run: |
                 poetry install -C python-artifact-signer
-                poetry add requests
+                poetry -C python-artifact-signer add requests
 
             - name: Run Black
               run: |
