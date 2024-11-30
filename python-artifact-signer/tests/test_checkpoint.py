@@ -25,4 +25,6 @@ def test_checkpoint():
     output = result.stdout
     data = json.loads(output)
 
+    print("stderr:", result.stderr)
+
     validate(instance=data, schema=checkpoint_schema)
