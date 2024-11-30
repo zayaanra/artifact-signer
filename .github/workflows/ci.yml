@@ -28,15 +28,14 @@ jobs:
             
             - name: Install dependencies
               run: |
-                poetry install -C python-artifact-signer --with=dev
+                poetry install -C python-artifact-signer
                 poetry -C python-artifact-signer/ add requests
-                source python-artifact-signer/.venv/bin/activate
                 poetry python-artifact-signer/ lock
-                
+                source python-artifact-signer/.venv/bin/activate
 
             - name: Run Black
               run: |
-                python-artifact-signer/.venv/bin/black --check python-artifact-signer/python_artifact_signer
+                black --check python-artifact-signer/python_artifact_signer
 
             - name: Run ruff
               run: |
