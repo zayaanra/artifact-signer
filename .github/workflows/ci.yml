@@ -29,8 +29,7 @@ jobs:
             - name: Install dependencies
               run: |
                 poetry install -C python-artifact-signer
-                poetry -C python-artifact-signer/ add requests
-                poetry python-artifact-signer/ lock
+                poetry -C python-artifact-signer/ lock
                 source python-artifact-signer/.venv/bin/activate
 
             - name: Run Black
