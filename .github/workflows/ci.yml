@@ -50,6 +50,6 @@ jobs:
             
             - name: Run Pytest
               run: |
-                PYTHONPATH=python-artifact-signer/ .venv/bin/pytest --cov
+                PYTHONPATH=python-artifact-signer/ /home/runner/.cache/pypoetry/virtualenvs/venv/bin/pytest --cov
               
 
