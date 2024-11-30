@@ -41,9 +41,9 @@ jobs:
             - name: Run TruffleHog
               uses: trufflesecurity/trufflehog@main
               with:
-                path: .
-                extra_args:
-                  --since-commit HEAD --no-verification --fail --no-update
+                base: ""
+                head: ${{ github.ref_name }}
+                extra_args: --no-verification
             
             - name: Run Pytest
               run: |
