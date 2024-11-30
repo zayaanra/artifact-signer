@@ -22,9 +22,10 @@ def test_checkpoint():
         capture_output=True,
         text=True
     )
+    print("stderr:", result.stderr)
+
     output = result.stdout
     data = json.loads(output)
 
-    print("stderr:", result.stderr)
 
     validate(instance=data, schema=checkpoint_schema)
