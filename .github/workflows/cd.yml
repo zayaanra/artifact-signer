@@ -1,0 +1,91 @@
+name: continuous-deployment
+
+permissions:
+  contents: write
+
+on:
+    push:
+        tags:
+            - '*'
+jobs:
+    build-poetry:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/setup-python@v5
+              with:
+                python-version: "3.10"
+
+            - name: Install Poetry
+              uses: snok/install-poetry@v1
+              with:
+                versions: 1.1.13
+                virtualenvs-create: true
+                virtualenvs-in-project: true
+
+            - name: Install dependencies
+              run: |
+                poetry install -C python-artifact-signer
+
+            - name: Build Poetry
+              run: |
+                cd python-artifact-signer
+                poetry build
+                cd ..
+
+            - uses: actions/upload-artifact@v4
+              with:
+                name: poetry-build
+                path: |
+                    python-artifact-signer/dist/*.whl
+                    python-artifact-signer/dist/*.tar.gz
+    
+    generate-sbom:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/setup-python@v5
+              with:
+                python-version: "3.10"
+
+            - name: Install Poetry
+              uses: snok/install-poetry@v1
+              with:
+                versions: 1.1.13
+                virtualenvs-create: true
+                virtualenvs-in-project: true
+
+            - name: Install dependencies
+              run: |
+                poetry install -C python-artifact-signer
+
+            - name: Generate SBOM
+              run: |
+                source python-artifact-signer/.venv/bin/activate
+                cd python-artifact-signer
+                cyclonedx-py poetry > ../cyclonedx-sbom.json
+                cd ..
+            
+            - uses: actions/upload-artifact@v4
+              with:
+                name: sbom
+                path: cyclonedx-sbom.json
+
+            - name: Attest SBOM
+              uses: actions/attest-sbom@v1
+              with:
+                sbom-path: cyclonedx-sbom.json
+                predicate-type: cyclonedx
+                github-token: ${{ github.token }}
+                output-path: python-artifact-signer/dist/sbom-attestation.bundle
+
+            - uses: actions/upload-artifact@v4
+              with:
+                name: sbom-attestation
+                path: python-artifact-signer/dist/sbom-attestation.bundle
+
+    
+
+
+
+
