@@ -12,7 +12,10 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/setup-python@v5
+            - uses: actions/checkout@v4
+            - name: Install Python
+            
+              uses: actions/setup-python@v5
               with:
                 python-version: "3.10"
 
@@ -29,7 +32,7 @@ jobs:
 
             - name: Build Poetry
               run: |
-                cd python-artifact-signer
+                cd python-artifact-signer/
                 poetry build
                 cd ..
 
@@ -57,7 +60,7 @@ jobs:
 
             - name: Install dependencies
               run: |
-                poetry install -C python-artifact-signer
+                poetry install -C python-artifact-signer/
 
             - name: Generate SBOM
               run: |
