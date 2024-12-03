@@ -1,7 +1,7 @@
 name: continuous-integration
 on: [push]
 jobs:
-    build-and-run:
+    integrate:
         runs-on: ubuntu-latest
         
         steps:
@@ -48,6 +48,12 @@ jobs:
             - name: Run Pytest
               run: |
                 source python-artifact-signer/.venv/bin/activate
-                PYTHONPATH=python-artifact-signer/ pytest --cov
+                PYTHONPATH=python-artifact-signer/ pytest --cov > tests.cov
+              
+            - name: Upload Pytest Coverage Report
+              uses: actions/upload-artifact@v4
+              with:
+                name: pytest-coverage-report
+                path: tests.cov
               
 

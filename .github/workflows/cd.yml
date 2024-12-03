@@ -63,9 +63,3 @@ jobs:
               with:
                 files: |
                     python-artifact-signer/dist/*
-
-    
-
-
-
-
