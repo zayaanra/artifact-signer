@@ -1,9 +1,6 @@
 name: continuous-deployment
 
-permissions:
-    id-token: write
-    contents: write
-
+permissions: write-all
 on:
     push:
         tags:
