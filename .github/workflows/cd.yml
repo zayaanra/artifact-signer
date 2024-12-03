@@ -66,24 +66,25 @@ jobs:
             - name: Generate SBOM
               run: |
                 source python-artifact-signer/.venv/bin/activate
-                cyclonedx-py poetry -o sbom.json
+                cyclonedx-py poetry > ../sbom.json python-artifact-signer
+
+            - name: Attest SBOM
+              uses: actions/attest-sbom@v1
+              with:
+                subject-path: python-artifact-signer/dist/
+                sbom-path: sbom.json
+                github-token: ${{ github.token }}
             
             - uses: actions/upload-artifact@v4
               with:
                 name: sbom
                 path: sbom.json
 
-            - name: Attest SBOM
-              uses: actions/attest-sbom@v1
-              with:
-                subject-path: dist/
-                sbom-path: sbom.json
-                github-token: ${{ github.token }}
-
-            - uses: softprops/action-gh-release@v1
+            - name: Upload Release
+              uses: softprops/action-gh-release@v1
               with:
                 files: |
-                    dist/*
+                    python-artifact-signer/dist/*
 
     
 
