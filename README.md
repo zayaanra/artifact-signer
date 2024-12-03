@@ -1,7 +1,9 @@
 # Artifact Signer
+![ci](https://github.com/zayaanra/artifact-signer/actions/workflows/ci.yml/badge.svg) ![cd](https://github.com/zayaanra/artifact-signer/actions/workflows/cd.yml/badge.svg) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/zayaanra/artifact-signer/badge)](https://scorecard.dev/viewer/?uri=github.com/zayaanra/artifact-signer) [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/9763/badge)](https://www.bestpractices.dev/projects/9763)
+
 
 ## Project Description
-This project will allow you to sign an artifact and upload its signature to a public instance of a transparency log. It will also verify the inclusion in the transparency log, along with verifying that the correct signature is stored in the transparency log.  Finally, it can verify the integrity of the transparency log at any point of time.
+This project will allow you to sign an artifact and upload its signature to a public instance of a transparency log. It will also verify the inclusion in the transparency log, along with verifying that the correct signature is stored in the transparency log. Finally, it can verify the integrity of the transparency log at any point of time.
 
 ## Installation
 1. Clone the repository
