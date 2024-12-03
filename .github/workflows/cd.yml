@@ -66,7 +66,7 @@ jobs:
             - name: Generate SBOM
               run: |
                 source python-artifact-signer/.venv/bin/activate
-                cyclonedx-py poetry > ../sbom.json python-artifact-signer
+                cyclonedx-py poetry -o sbom.json
             
             - uses: actions/upload-artifact@v4
               with:
